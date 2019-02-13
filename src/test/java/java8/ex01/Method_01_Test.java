@@ -2,6 +2,8 @@ package java8.ex01;
 
 import java8.data.Data;
 import java8.data.Person;
+import java8.ex01.Method_01_Test.IDao;
+
 import org.junit.Test;
 
 import java.util.List;
@@ -20,6 +22,17 @@ public class Method_01_Test {
 
         // TODO créer une méthode int sumAge()
         // TODO Cette méthode retourne le résultat de l'addition des ages des personnes
+        
+        default public Integer sumAge(){
+        	int age = 0 ;
+        
+        	for(Person unePersonne:findAll()){
+        	
+        		age = age + unePersonne.getAge();
+        		
+        	}
+        	return age;
+        }
     }
     // end::IDao[]
 
@@ -49,7 +62,8 @@ public class Method_01_Test {
         DaoA daoA = new DaoA();
 
         // TODO invoquer la méthode sumAge pour que le test soit passant
-        int result = 0;
+        
+        int result =daoA.sumAge() ;
 
         assertThat(result, is(210));
     }
@@ -60,7 +74,8 @@ public class Method_01_Test {
         DaoB daoB = new DaoB();
 
         // TODO invoquer la méthode sumAge pour que le test soit passant
-        int result = 0;
+        
+        int result =daoB.sumAge();
 
         assertThat(result, is(5050));
 
